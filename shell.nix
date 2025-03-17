@@ -1,3 +1,7 @@
+# tutorial on NixOS: 
+# 1. cd folder
+# 2. cmd -> nix-shell -> code .
+
 { pkgs ? import <nixpkgs> {} }:
 
 pkgs.mkShell {
