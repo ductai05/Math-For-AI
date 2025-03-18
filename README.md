@@ -1,5 +1,7 @@
 # Math for AI - Machine Learning Algorithms
 
+Group 6 - Math for AI, AI23 @ HCMUS
+
 This repository contains implementations of various machine learning algorithms, including but not limited to **Linear Regression**. The code is designed for educational purposes, providing a clear and concise understanding of the mathematical foundations and practical applications of these algorithms.
 
 ## Contents
