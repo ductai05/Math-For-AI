@@ -1,1 +1,8 @@
 LR.html
+
+shell.nix
+/.nix
+*.nix
+
+/.idea
+*.idea
