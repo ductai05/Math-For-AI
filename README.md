@@ -52,7 +52,7 @@ To set up a development environment using Nix, which ensures that all the necess
     ```bash
     . code
     ```
-    ## Usage
+    #### Usage
 
     1.  Open the `LR.ipynb` Jupyter Notebook to explore the implementation of linear regression.
     2.  Choose the kernel created by `nix-shell`
