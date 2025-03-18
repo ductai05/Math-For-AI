@@ -7,7 +7,7 @@
 pkgs.mkShell {
   buildInputs = [
     pkgs.python3Packages.jupyter
-    pkgs.python3Packages.ipykernel # Bắt buộc phải có!
+    pkgs.python3Packages.ipykernel
     pkgs.python3Packages.numpy
     pkgs.python3Packages.pandas
     pkgs.python3Packages.matplotlib
