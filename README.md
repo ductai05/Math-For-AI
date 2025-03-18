@@ -28,7 +28,7 @@ Install the required libraries using:
 pip install numpy matplotlib pandas
 ```
 
-## Set up on NixOS / Nix
+#### Set up on NixOS / Nix (if you use NixOS / Nix - else: you can skip this)
 To set up a development environment using Nix, which ensures that all the necessary dependencies are available, you can use the `nix-shell` command. This project includes a `shell.nix` file that specifies the required packages.
 
 1.  Ensure you have Nix installed on your system. If not, you can install it from [the official Nix website](https://nixos.org/download.html).
@@ -52,7 +52,7 @@ To set up a development environment using Nix, which ensures that all the necess
     ```bash
     . code
     ```
-    #### Usage
+    ###### Usage
 
     1.  Open the `LR.ipynb` Jupyter Notebook to explore the implementation of linear regression.
     2.  Choose the kernel created by `nix-shell`
