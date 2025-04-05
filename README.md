@@ -2,18 +2,11 @@
 
 Group 6 - Math for AI, AI23 @ HCMUS
 
-This repository contains implementations of various machine learning algorithms, including but not limited to **Linear Regression**. The code is designed for educational purposes, providing a clear and concise understanding of the mathematical foundations and practical applications of these algorithms.
+This repository contains implementations of various machine learning algorithms, including **Linear Regression**. The code is designed for educational purposes, providing a clear and concise understanding of the mathematical foundations and practical applications of these algorithms.
 
 ## Contents
 
 - **Linear Regression**: Implementation of linear regression for predictive modeling.
-- **Other Machine Learning Algorithms**: Additional algorithms will be added to explore different aspects of machine learning.
-
-## Structure
-
-- `LR.ipynb`: Jupyter Notebook containing the implementation and exploration of linear regression.
-- `train.csv`: Dataset used for training and testing the models.
-- Additional files and notebooks for other algorithms will be included as the repository evolves.
 
 ## Requirements
 
