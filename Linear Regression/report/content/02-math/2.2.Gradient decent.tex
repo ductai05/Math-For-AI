@@ -1,0 +1,124 @@
+\subsection{Thuật toán Gradient Decent}
+\label{label:GradientDecent}
+\paragraph{}{Các kiến thức trong phần này được trích dẫn từ sách Giáo trình Vi tích phân 2 \cite{vtp2}, bộ môn Giải tích, khoa Toán - Tin học, trường Đại học Khoa học tự nhiên, ĐHQG-HCM và một số blog khác.}
+
+\subsubsection{Gradient Descent}
+\paragraph{}{Gradient Descent \cite{mlcoban-gradient-descent} tìm nghiệm của bài toán tối ưu:}
+
+\begin{center}
+    \large $\theta^* = \arg\min_{\theta} f(\theta)$
+\end{center}
+
+\paragraph{}{Bằng cách cập nhật tham số $\theta$ theo công thức:}
+
+\begin{center}
+    \large $\theta_{t+1} = \theta_t - \alpha \nabla f(\theta_t)$
+\end{center}
+
+Trong đó:
+\begin{itemize}
+    \item $\theta_t$ là giá trị hiện tại của tham số,
+    \item $\alpha$ là learning rate,
+    \item $\nabla f(\theta_t)$ là gradient của hàm mất mát.
+\end{itemize}
+
+\paragraph{}{Nếu Gradient Descent hội tụ, ta có nghiệm tối ưu $\theta^*$ thỏa mãn:}
+
+\begin{center}
+    \large $\nabla f(\theta^*) = 0$
+\end{center}
+
+\subsubsection{Ma trận Hessian}
+
+\paragraph{}{Ma trận \textbf{Hessian} của một hàm số thực khả vi hai lần \( f(x_1, x_2, \dots, x_n) \) được định nghĩa là:}
+
+\[
+H_f(x) =
+\begin{bmatrix}
+\frac{\partial^2 f}{\partial x_1^2} & \frac{\partial^2 f}{\partial x_1 \partial x_2} & \dots & \frac{\partial^2 f}{\partial x_1 \partial x_n} \\
+\frac{\partial^2 f}{\partial x_2 \partial x_1} & \frac{\partial^2 f}{\partial x_2^2} & \dots & \frac{\partial^2 f}{\partial x_2 \partial x_n} \\
+\vdots & \vdots & \ddots & \vdots \\
+\frac{\partial^2 f}{\partial x_n \partial x_1} & \frac{\partial^2 f}{\partial x_n \partial x_2} & \dots & \frac{\partial^2 f}{\partial x_n^2}
+\end{bmatrix}
+\]
+
+\paragraph{}{\textbf{Phân loại điểm dừng dựa vào ma trận Hessian:}}
+\begin{itemize}
+    \item Nếu \( H_f \) \textbf{dương xác định} \( \Rightarrow \) điểm cực tiểu.
+    \item Nếu \( H_f \) \textbf{âm xác định} \( \Rightarrow \) điểm cực đại.
+    \item Nếu \( H_f \) \textbf{không xác định} \( \Rightarrow \) điểm yên ngựa.
+    \item Nếu \( H_f \) bằng 0 hoặc có định thức bằng 0 \( \Rightarrow \) không kết luận được.
+\end{itemize}
+\subsubsection{Tốc độ hội tụ của Gradient Descent}
+\label{label:toc do hoi tu}
+
+\paragraph{}{Gradient Descent cập nhật tham số theo công thức:}
+\[
+\theta^{(t+1)} = \theta^{(t)} - \alpha \nabla J(\theta^{(t)})
+\]
+\paragraph{}{Với \( J(\theta) \) là hàm mất mát, \( \nabla J(\theta) \) là gradient và \( \alpha \) là tốc độ học.}
+
+\paragraph{}{\textbf{Mô hình hội tụ:} \cite{csstudyfun-convergence}} 
+
+\paragraph{}{Giả sử \( J(\theta) \) là một hàm bậc hai:}
+\[
+J(\theta) = \frac{1}{2} \theta^T H \theta - b^T \theta
+\]
+\paragraph{}{với \( H \) là ma trận Hessian đối xứng xác định dương. Khi đó, gradient là:}
+\[
+\nabla J(\theta) = H \theta - b
+\]
+\paragraph{}{Suy ra phương trình cập nhật:}
+\[
+\theta^{(t+1)} = \theta^{(t)} - \alpha H (\theta^{(t)} - H^{-1} b)
+\]
+\paragraph{}{Đặt \( e^{(t)} = \theta^{(t)} - \theta^* \) khi đó ta giả sử  \( \theta^* = H^{-1} b \) là nghiệm tối ưu, ta có:}
+\[
+e^{(t+1)} = (I - \alpha H) e^{(t)}
+\]
+\paragraph{}{Giả sử \( H \) có các giá trị riêng \( \lambda_1, \lambda_2, \dots, \lambda_n \), ta phân rã eigen:}
+\[
+H = Q \Lambda Q^{-1}, \quad \Lambda = \text{diag}(\lambda_1, \lambda_2, \dots, \lambda_n)
+\]
+\paragraph{}{Khi đó:}
+\[
+e^{(t)} = Q (I - \alpha \Lambda)^t Q^T e^{(0)}
+\]
+\paragraph{}{Do đó, tốc độ hội tụ phụ thuộc vào:}
+\[
+\| e^{(t)} \|_2 \leq \rho^t \| e^{(0)} \|_2
+\]
+\paragraph{}{với \( \rho = \max |1 - \alpha \lambda_i| \). Điều kiện hội tụ:}
+\[
+0 < \alpha < \frac{2}{\lambda_{\max}}
+\]
+\paragraph{}{Tốc độ hội tụ được ước lượng bởi:}
+\[
+\frac{\lambda_{\max} - \lambda_{\min}}{\lambda_{\max} + \lambda_{\min}} = \frac{\kappa(H) - 1}{\kappa(H) + 1}
+\]
+\paragraph{}{Với \( \kappa(H) = \frac{\lambda_{\max}}{\lambda_{\min}} \) là số điều kiện của \( H \).
+Nếu \( \kappa(H) \gg 1 \), thuật toán hội tụ rất chậm.}
+
+\subsubsection{Ảnh hưởng của dữ liệu chưa chuẩn hóa đối với Gradient Descent}
+
+\paragraph{}{Nếu dữ liệu chưa chuẩn hóa, ma trận Hessian \( H = X^T X \) có các giá trị riêng phân bố không đều, khiến \( \kappa(H) \) lớn và làm giảm tốc độ hội tụ.}
+
+\paragraph{}{Ví dụ, xét dữ liệu với hai biến:
+- \( x_1 \in [0,1] \)
+- \( x_2 \in [1,10^6] \)}
+
+\paragraph{}{Khi đó, Hessian \( H \) có một giá trị riêng rất lớn và một giá trị riêng rất nhỏ, làm tăng \( \kappa(H) \), khiến Gradient Descent dao động mạnh và hội tụ chậm.}
+
+\paragraph{}{\textbf{Khi đưa về giá trị chuẩn (Standardization)}}
+\paragraph{}{Dữ liệu được chuẩn hóa theo:}
+\[
+x_i' = \frac{x_i - \mu_i}{\sigma_i}
+\]
+\paragraph{}{Ma trận Hessian mới:}
+\[
+H' = X'^T X'
+\]
+\paragraph{}{Các giá trị riêng của \( H' \) được cân bằng hơn, giúp giảm \( \kappa(H') \). Nếu chuẩn hóa tốt, ta có thể đạt \( \kappa(H') \approx 1 \), giúp Gradient Descent hội tụ nhanh hơn.}
+
+\paragraph{}{\textbf{Kết luận:} Chuẩn hóa dữ liệu giúp cải thiện tốc độ hội tụ của Gradient Descent bằng cách giảm số điều kiện \( \kappa(H) \), làm thuật toán ổn định hơn và ít dao động hơn.}
+

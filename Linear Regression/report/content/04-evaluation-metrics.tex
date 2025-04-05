@@ -1,0 +1,102 @@
+\newpage
+\section{Các phương pháp đánh giá mô hình}
+
+\paragraph{}{Vì kết quả dự đoán của mô hình hồi quy (Regression) là giá trị liên tục, chúng ta cần các chỉ số đánh giá (evaluation metrics) \cite{regression-metrics} để định lượng "khoảng cách" hay sai số giữa \textbf{giá trị được dự đoán} (predicted) và \textbf{giá trị thực tế} (ground truth). Ba chỉ số chính dựa trên việc tính toán sai số này là MSE, RMSE, và MAE. Bên cạnh đó, chỉ số $R^2$ cũng được sử dụng rộng rãi để đánh giá mức độ phù hợp của mô hình.}
+
+\subsection{MSE}
+
+\paragraph{}{\textbf{MSE (Mean Squared Error)} hay \textbf{trung bình sai số bình phương} là giá trị trung bình của bình phương độ chênh lệch giữa giá trị mục tiêu và giá trị được dự đoán bởi mô hình hồi quy.}
+
+\begin{center}
+\large $MSE = \frac{1}{N}\sum_{i=1}^{N}(y_{i}-\hat{y_{i}})^2$
+\end{center}
+
+Trong đó:
+\begin{itemize}
+    \item $y_{i}$: Giá trị thực tế.
+    \item $\hat{y_{i}}$: Giá trị được dự đoán bởi mô hình hồi quy.
+    \item N: Số lượng dữ liệu.
+\end{itemize}
+
+\paragraph{Ý nghĩa:}{}
+\begin{itemize}
+\item MSE có miền giá trị từ $[0,+\infty ]$. 
+\item Trên cùng tập dữ liệu, MSE càng nhỏ thì có độ chính xác càng cao. 
+\item Vì lấy bình phương sai số nên đơn vị của MSE khác với đơn vị của kết quả dự đoán.
+\item MSE nhạy cảm với các giá trị ngoại lệ (outliers) do tính bình phương. Các giá trị lớn hơn sẽ có ảnh hưởng lớn hơn đến MSE.
+\end{itemize}
+
+\subsection{RMSE}
+\paragraph{}{\textbf{RMSE (Root Mean Squared Error)} hay \textbf{căn bậc hai của trung bình sai số bình phương} là giá trị căn bậc hai cho trung bình của bình phương độ chênh lệch giữa giá trị mục tiêu và giá trị được dự đoán bởi mô hình hồi quy.}
+
+\begin{center}
+\large $RMSE = \sqrt{\frac{1}{N}\sum_{i=1}^{N}(y_{i}-\hat{y_{i}})^2}$
+\end{center}
+
+Trong đó:
+\begin{itemize}
+    \item $y_{i}$: Giá trị thực tế.
+    \item $\hat{y_{i}}$: Giá trị được dự đoán bởi mô hình hồi quy.
+    \item N: Số lượng dữ liệu.
+\end{itemize}
+
+\paragraph{Ý nghĩa:}{}
+\begin{itemize}
+\item RMSE có miền giá trị từ $[0,+\infty ]$. 
+\item Trên cùng tập dữ liệu, RMSE càng nhỏ thì có độ chính xác càng cao. 
+\item Việc lấy căn bậc 2 của MSE giúp RMSE có cùng đơn vị với kết quả dự đoán, đồng thời làm giá trị RMSE không quá lớn khi số lượng điểm dữ liệu lớn.
+\item RMSE cũng như MSE, nhạy cảm với các giá trị ngoại lệ (outliers) do tính bình phương.
+\end{itemize}
+
+\subsection{MAE}
+
+\paragraph{}{\textbf{MAE (Mean Absolute Error)} hay \textbf{trung bình sai số tuyệt đối} là trung bình của giá trị tuyệt đối độ chênh lệch giữa giá trị mục tiêu và giá trị được dự đoán bởi mô hình hồi quy.}
+
+\begin{center}
+\large $MAE = \frac{1}{N}\sum_{i=1}^{N}\left| y_{i}-\hat{y_{i}} \right|$
+\end{center}
+
+Trong đó:
+\begin{itemize}
+    \item $y_{i}$: Giá trị thực tế.
+    \item $\hat{y_{i}}$: Giá trị được dự đoán bởi mô hình hồi quy.
+    \item N: Số lượng dữ liệu.
+\end{itemize}
+
+\paragraph{Ý nghĩa:}{}
+\begin{itemize}
+\item MAE có miền giá trị từ $[0,+\infty ]$. 
+\item Trên cùng tập dữ liệu, MAE càng nhỏ thì có độ chính xác càng cao.
+\item MAE không nhạy cảm với giá trị ngoại lệ (outliers) do việc sử dụng giá trị tuyệt đối.
+\item MAE không phản ánh mức độ sai số cụ thể của mô hình. Nó không phân biệt được các lỗi dương và âm, chỉ cho ta biết lỗi trung bình.
+\end{itemize}
+
+\subsection{R-squared}
+
+\paragraph{}{\textbf{Hệ số xác định} (Coefficient of Determination) \cite{xstk} là tỷ lệ của tổng sự biến thiên trong biến phụ thuộc gây ra bởi sự biến thiên của các biến độc lập (biến giải thích) so với tổng sự biến thiên toàn phần. Hệ số xác định thường được gọi là \textbf{R - bình phương} (\textbf{R-squared}), ký hiệu là $R^2$.}
+
+\begin{center}
+\large $R^{2} = \frac{SSR}{SST} = 1 - \frac{SSE}{SST} = 1 - \frac{\sum_{i=1}^{N} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{N} (y_i - \bar{y})^2}$
+\end{center}
+
+Trong đó:
+\begin{itemize}
+    \item $y_{i}$: Giá trị thực tế.
+    \item $\hat{y_{i}}$: Giá trị được dự đoán bởi mô hình hồi quy.
+    \item $\bar{y}$: Giá trị trung bình của tất cả các giá trị thực tế.
+    \item N: Số lượng dữ liệu.
+    \item SST: Tổng bình phương toàn phần (Total Sum of Squares).
+    \item SSR: Tổng bình phương hồi quy (Regression Sum of Squares).
+    \item SSE: Tổng bình phương sai số (Error Sum of Squares).
+\end{itemize}
+
+\paragraph{Ý nghĩa:}{}
+\begin{itemize}
+\item $R^2$ có thường có miền giá trị từ $[0,1]$, nhưng có thể nhận giá trị âm\footnote{Nếu $SSE > SST$, $R^2$ sẽ âm. Điều này xảy ra khi mô hình dự đoán tệ hơn cả việc chỉ dự đoán bằng giá trị $\hat{y}$.}. Giá trị $R^2$ càng gần 1 thì mô hình càng phù hợp. 
+\item $R^2$ của một mô hình hồi quy cho phép ta đánh giá mô hình tìm được có giải thích tốt cho mối liên hệ giá trị dự đoán $\hat{y}$ và giá trị thực tế $y$ hay không.
+\item Với $R^2$ cao (gần 1) thì trên tổng thể, các giá trị dự đoán $\hat{y}$ có xu hướng gần với giá trị thực tế $y$.
+\item $R^2$ không cho biết hiệu suất của từng dự đoán riêng lẻ. Một mô hình có $R^2$ cao vẫn có thể tạo ra một số dự đoán rất tệ cho các điểm dữ liệu cụ thể.
+
+\end{itemize}
+
+\pagebreak

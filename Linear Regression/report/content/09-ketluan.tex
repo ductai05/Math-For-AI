@@ -1,0 +1,106 @@
+\newpage
+\section{Kết luận}
+\subsection{Hiệu suất các mô hình}
+
+\begin{table}[H]
+\centering
+\label{tab:metrics}
+\begin{tabular}{@{}ccccccccc@{}}
+\toprule
+\multirow{2}{*}{\textbf{Mô hình}} &
+  \multicolumn{8}{c}{\textbf{Phương pháp đánh giá}} \\ \cmidrule(l){2-9} 
+ &
+  \multicolumn{4}{c|}{\textbf{Tập huấn luyện}} &
+  \multicolumn{4}{c}{\textbf{Tập kiểm chứng}} \\ \midrule
+\textbf{Tên} &
+  \textbf{MSE} &
+  \textbf{RMSE} &
+  \textbf{MAE} &
+  \multicolumn{1}{c|}{$\bm{R^2}$} &
+  \textbf{MSE} &
+  \textbf{RMSE} &
+  \textbf{MAE} &
+  $\bm{R^2}$ \\ \midrule
+Simple &
+  $5.32 \times 10^{10}$ &
+  $2.30 \times 10^{5}$ &
+  $7.55 \times 10^{4}$ &
+  \multicolumn{1}{c|}{0.99} &
+  $3.16 \times 10^{11}$ &
+  $5.62 \times 10^{5}$ &
+  $2.98 \times 10^{5}$ &
+  0.930 \\
+Multiple &
+  $1.80 \times 10^{11}$ &
+  $4.25 \times 10^{5}$ &
+  $2.41 \times 10^{5}$ &
+  \multicolumn{1}{c|}{0.96} &
+  $2.20 \times 10^{11}$ &
+  $4.69 \times 10^{5}$ &
+  $2.98 \times 10^{5}$ &
+  0.951 \\
+Poly &
+  $4.03 \times 10^{10}$ &
+  $2.00 \times 10^{5}$ &
+  $1.12 \times 10^{5}$ &
+  \multicolumn{1}{c|}{0.99} &
+  $1.89 \times 10^{11}$ &
+  $4.35 \times 10^{5}$ &
+  $2.28 \times 10^{5}$ &
+  0.960 \\
+PCA &
+  $5.26 \times 10^{10}$ &
+  $2.29 \times 10^{5}$ &
+  $9.65 \times 10^{4}$ &
+  \multicolumn{1}{c|}{0.99} &
+  $2.95 \times 10^{11}$ &
+  $5.43 \times 10^{5}$ &
+  $2.91 \times 10^{5}$ &
+  0.934 \\ \bottomrule
+\end{tabular}
+\caption{Các đánh giá cho từng mô hình}
+\end{table}
+
+\paragraph{Nhận xét:}
+\begin{itemize}
+    \item Mô hình Simple đạt $R^2$ cao do sự tương quan lớn giữa đặc trưng \texttt{Model} và \texttt{Price}.
+    \item Mô hình Multiple cho hiệu suất không chênh lệch nhiều\footnote{Mô hình Multiple có sử dụng Cross-validation trong quá trình huấn luyện} trên tập huấn luyện và kiểm chứng. 
+    \item Mô hình Polynomial cho hiệu suất tốt nhất trên cả tập huấn luyện và tập kiểm chứng.
+    \item Mô hình PCA đã cải thiện hiệu suất hơn so với mô hình Simple.
+\end{itemize}
+
+\subsection{So sánh các loại mô hình}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{2cm}|p{4cm}|p{5cm}|p{5cm}|}
+\hline
+\textbf{Đặc điểm} & \textbf{Hồi quy đơn giản} & \textbf{Hồi quy đa biến} & \textbf{Hồi quy đa thức} \\
+\hline
+Số biến độc lập & Một biến & Nhiều biến & Một biến/Nhiều biến có bậc \\
+\hline
+Mô hình toán học & $Y = b + \theta_1 X$ & $Y = b + \theta_1 x_1 + \dots + \theta_p x_p$ & $
+y = \sum_{|\mathbf{j}| \leq d} \beta_{\mathbf{j}} \mathbf{x}^{\mathbf{j}} + \epsilon
+$\\
+\hline
+Diễn giải hình học & Đường thẳng trong không gian 2 chiều & Siêu phẳng trong không gian $p+1$ chiều & Siêu mặt cong trong không gian nhiều chiều \\
+\hline
+Ưu điểm & Đơn giản, dễ đánh giá, tránh được một số vấn đề đa cộng tuyến. & Mô hình hóa tuyến tính, đơn giản, ít bị đa cộng tuyến. & Mô hình hóa mối quan hệ phi tuyến tính, dự đoán hiệu quả dữ liệu phức tạp.\\
+\hline
+Nhược điểm & Hạn chế khả năng mô hình hóa tương tác. & Hạn chế mô hình hóa phi tuyến tính. & Phức tạp, dễ bị cộng đa tuyến, overfitting.\\
+\hline
+\end{tabular}
+\caption{So sánh giữa các mô hình hồi quy tuyến tính}
+\end{table}
+
+\paragraph{Nhận xét:}{Hồi quy tuyến tính đa thức vượt trội hơn so với hồi quy tuyến tính đơn giản và hồi quy đa biến trong việc:}
+
+\begin{itemize}
+    \item Mô hình hóa các mối quan hệ phi tuyến tính.
+    \item Cung cấp khả năng phân tích sự tương tác giữa các đặc trưng của bộ dữ liệu.
+    \item Tăng khả năng dự báo chính xác khi có nhiều yếu tố ảnh hưởng, bộ dữ liệu phức tạp.
+\end{itemize}
+
+\paragraph{}{Qua thực nghiệm, mô hình hồi quy đa thức (polynomial regression) là mô hình tốt nhất để giải quyết bài toán dự đoán giá xe.}
+
+\pagebreak
