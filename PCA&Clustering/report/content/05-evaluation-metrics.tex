@@ -1,0 +1,69 @@
+\newpage
+\section{Các phương pháp đánh giá mô hình}
+
+\paragraph{}{Kết quả dự đoán của mô hình phân loại (Classification) là các nhãn rời rạc, chúng ta cần các chỉ số đánh giá (evaluation metrics) để đo lường mức độ chính xác và hiệu quả trong việc phân loại các mẫu vào đúng nhãn. Các chỉ số phổ biến bao gồm \textbf{Accuracy}, \textbf{Precision}, \textbf{Recall} và \textbf{F1-score}. Mỗi chỉ số phản ánh một khía cạnh khác nhau của hiệu suất mô hình. Ngoài ra, \textbf{Confusion Matrix} cũng là một công cụ quan trọng giúp trực quan hóa chi tiết số lượng các dự đoán đúng và sai theo từng lớp, đặc biệt hữu ích trong các bài toán phân loại nhiều lớp hoặc mất cân bằng lớp.}
+
+\paragraph{Các ký hiệu sau được sử dụng trong các công thức đánh giá}
+
+\begin{itemize}
+  \item \textbf{TP} (True Positive): Dự đoán đúng mẫu thuộc lớp dương tính (positive class).
+  \item \textbf{TN} (True Negative): Dự đoán đúng mẫu thuộc lớp âm tính (negative class).
+  \item \textbf{FP} (False Positive): Dự đoán sai, mô hình dự đoán dương tính nhưng thực tế là âm tính.
+  \item \textbf{FN} (False Negative): Dự đoán sai, mô hình dự đoán âm tính nhưng thực tế là dương tính.
+\end{itemize}
+
+\subsection{Accuracy}
+
+\paragraph{}{Accuracy đo lường tỷ lệ các dự đoán chính xác trên tổng thể.Công thức của Accuracy: }
+
+\[
+\text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
+\]
+
+
+
+\subsection{Precision}
+\paragraph{}{Precision đo lường tỷ lệ dự báo chính xác các trường hợp dương tính (positive) trên tổng số trường hợp mà mô hình dự đoán là dương tính. Công thức của Precision như sau:}
+
+\[
+\text{Precision} = \frac{TP}{TP + FP}
+\]
+
+\subsection{Recall}
+
+\paragraph{}{Recall đo lường tỷ lệ dự báo chính xác các trường hợp positive trên toàn bộ các mẫu thuộc nhóm Positive.Công thức của recall như sau:}
+
+\[
+\text{Recall} = \frac{TP}{TP + FN}
+\]
+
+\subsection{F1-Score}
+
+\paragraph{}{F1-score là chỉ số tổng hợp dùng để cân bằng giữa Precision và Recall. F1-score đặc biệt hữu ích khi cần sự cân bằng giữa độ chính xác và độ bao phủ trong các mô hình phân loại. Công thức của F1-score như sau:}
+
+\[
+\text{F1-score} = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
+\]
+
+\subsection{Confusion Matrix}
+
+\paragraph{}{Confusion Matrix minh họa số lượng dự đoán đúng/sai cho từng lớp. Với bài toán phân loại nhị phân, ma trận có dạng:}
+
+\[
+\begin{array}{|c|c|c|}
+\hline
+\multirow{2}{*}{\textbf{Actual}} & \multicolumn{2}{c|}{\textbf{Predicted}} \\
+\cline{2-3}
+& \text{Negative (No)} & \text{Positive (Yes)} \\
+\hline
+\text{Negative (No)} & \text{TN} & \text{FP} \\
+\hline
+\text{Positive (Yes)} & \text{FN} & \text{TP} \\
+\hline
+\end{array}
+\]
+
+
+Từ ma trận này, ta có thể dễ dàng tính được các chỉ số như Accuracy, Precision, Recall và F1-score.
+
+\pagebreak

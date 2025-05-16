@@ -1,0 +1,53 @@
+\newpage
+\section{Giới thiệu}
+
+\paragraph{}{Đây là bài báo cáo cho \textbf{Lab 2 - PCA và bài toán phân cụm}, môn Phương pháp toán cho Trí tuệ nhân tạo, lớp Trí tuệ nhân tạo Khóa 2023 (23TNT1), Khoa Công nghệ thông tin, Trường Đại học Khoa học tự nhiên - Đại học Quốc gia TP.HCM. Trong bài báo cáo này, chúng tôi sẽ trình bày phương pháp \textbf{phân cụm dữ liệu} bằng kĩ thuật giảm chiều dữ liệu \textbf{PCA} cùng hai thuật toán phân cụm \textbf{K-Means} và \textbf{GMM} trên bộ dữ liệu IRIS và ABIDE II.}
+
+\paragraph{}{\textbf{Báo cáo được thực hiện bởi nhóm các thành viên:}} 
+\begin{itemize}
+    \item Nguyễn Đình Hà Dương (23122002)
+    \item Nguyễn Lê Hoàng Trung (23122004)
+    \item Đinh Đức Tài (23122013)
+    \item Hoàng Minh Trung (23122014)
+\end{itemize}
+
+\paragraph{}{\textbf{Đường dẫn repository Github của báo cáo:}} \href{https://github.com/ductai05/Math-For-AI}{https://github.com/ductai05/Math-For-AI} \cite{repo}
+
+\paragraph{}{\textbf{Bảng phân công nhiệm vụ cho từng thành viên:}}
+
+\begin{table}[H]
+\centering
+\caption{}
+\label{tab:nhiemvu}
+\begin{tabular}{|c|c|l|}
+\hline
+\textbf{Họ và tên} &
+  \textbf{MSSV} &
+  \multicolumn{1}{c|}{\textbf{Nhiệm vụ}} \\ \hline
+\begin{tabular}[c]{@{}c@{}}Nguyễn Đình\\ Hà Dương\end{tabular} &
+  23122002 &
+  \begin{tabular}[c]{@{}l@{}}- Code \& báo cáo K-Means, GMM.\\ - Báo cáo evaluation metrics.\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}c@{}}Nguyễn Lê\\ Hoàng Trung\end{tabular} &
+  23122004 &
+  \begin{tabular}[c]{@{}l@{}}- Code \& báo cáo K-Means, GMM.\\ - Code \& báo cáo so sánh kết quả phân cụm.\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}c@{}}Đinh \\ Đức Tài\end{tabular} &
+  23122013 &
+  \begin{tabular}[c]{@{}l@{}}- Code \& báo cáo Iris dataset. Code evaluation metrics.\\ - Review code \& báo cáo. Kết luận.\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}c@{}}Hoàng\\ Minh Trung\end{tabular} &
+  23122014 &
+  \begin{tabular}[c]{@{}l@{}}- Code Class MyPCA \& Z-score \& Hungary algorithm\\ - Báo cáo MyPCA, EVR, CEVR\end{tabular} \\ \hline
+\end{tabular}
+\end{table}
+
+\paragraph{}{\textbf{Các thư viện và công nghệ sử dụng:}}
+
+\begin{itemize}
+    \item Numpy, Pandas: thư viện Python để xử lý số học, thao tác và xử lý dữ liệu.
+    \item scikit-learn: thư viện học máy, dùng để tải dữ liệu IRIS
+    \item Matplotlib: thư viện Python để trực quan hóa dữ liệu.
+    \item Jupyter Notebook (thông qua jupyter, ipykernel): Môi trường làm việc tương tác cho phép kết hợp mã thực thi, văn bản mô tả (Markdown), công thức toán học và trực quan hóa trong cùng một tài liệu.
+    \item Visual Studio Code: Trình soạn thảo mã nguồn (IDE). 
+    \item Git, Github: Quản lý dự án, lưu và chia sẻ source code.
+\end{itemize}
+
+\pagebreak

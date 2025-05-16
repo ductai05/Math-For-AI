@@ -1,0 +1,76 @@
+\section{PCA, EVR, CEVR}
+\subsection{PCA}
+
+\paragraph{Giới thiệu tổng quan:} 
+
+\paragraph{}{Phân tích thành phần chính (PCA) là kỹ thuật giảm chiều, chuyển dữ liệu từ không gian ban đầu sang không gian mới với các thành phần chính không tương quan, giữ phần lớn phương sai. Hữu ích khi xử lý với các dữ liệu cao chiều.}
+
+\paragraph{Các bước tính toán:}
+\begin{enumerate}
+  \item \textbf{Tính vector kì vọng của toàn bộ dữ liệu:}
+    \[
+        \mathbf{\overline{X}} = \frac{1}{N} \sum_{i=1}^{N} \vec{x_i}
+    \]
+    với $\vec{x_i}$ là sample thứ $i$ trong dữ liệu.
+  \item \textbf{Chuẩn hóa dữ liệu:} Với ma trận dữ liệu $\mathbf{X} \in \mathbb{R}^{n \times p}$ ($n$ mẫu, $p$ biến), đưa về trọng tâm: 
+      \[
+      \mathbf{X}_{\text{centered}} = \mathbf{X} - \mathbf{\overline{X}},
+      \]
+      với $\mathbf{\overline{X}}$ là ma trận chứa các vector trung bình của các cột (đặc trưng). 
+  \item \textbf{Tính ma trận hiệp phương sai:} 
+      \[
+      \mathbf{A} = \frac{1}{N} \mathbf{X}_{\text{centered}}^T \mathbf{X}_{\text{centered}},
+      \]
+      trong đó $\mathbf{A} \in \mathbb{R}^{d \times d}$ là ma trận hiệp phương sai, $N$ là số mẫu trong dữ liệu.
+  \item \textbf{Phân tích giá trị riêng và vector riêng:} Tìm giá trị riêng $\lambda_i$ và vector riêng $\mathbf{v}_i$ của $\mathbf{A}$ sao cho:
+      \[
+      \mathbf{A} \mathbf{v}_i = \lambda_i \mathbf{v}_i, \quad i = 1, \dots, n.
+      \]
+      Các $\mathbf{v}_i$ là các hướng của thành phần chính với $\lambda_i$ là phương sai tương ứng.
+  \item \textbf{Lựa chọn thành phần chính:} Sắp xếp $\lambda_i$ giảm dần và chọn số thành phần chính muốn giữ lại. Hoặc có thể tính tỷ lệ phương sai tích lũy như sau:
+      \[
+      \text{Tỷ lệ} = \frac{\sum_{i=1}^k \lambda_i}{\sum_{i=1}^n \lambda_i},
+      \]
+      rồi chọn $k$ thành phần sao cho tỷ lệ đạt 80-95\% tùy nhu cầu.
+  \item \textbf{Chiếu dữ liệu:} Tạo ma trận $\mathbf{V}_k \in \mathbb{R}^{n \times k}$ từ $k$ vector riêng, chiếu dữ liệu:
+      \[
+      \mathbf{Z} = \mathbf{X}_{\text{centered}} \mathbf{V}_k,
+      \]
+      với $\mathbf{Z} \in \mathbb{R}^{n \times k}$ là dữ liệu trong không gian mới.
+\end{enumerate}
+
+\subsubsection*{Ý nghĩa:} 
+\begin{itemize}
+  \item \textbf{Thành phần chính (vector riêng):} Là các hướng $\mathbf{v}_i$ tối đa hóa phương sai. Các thành phần chính trực giao với nhau, giảm chiều mà giữ thông tin chính.
+  \item \textbf{Trị riêng:} Cho biết mức độ quan trọng (explained variance) của mỗi thành phần chính. Trị riêng càng lớn thì phương sai theo hướng đó càng lớn, dẫn đến thành phần chính đó càng quan trọng.
+\end{itemize}
+
+\subsection{Explained variance ratio}
+
+\paragraph{}{Explained Variance Ratio (EVR) cho biết tỷ lệ phương sai của dữ liệu được giải thích bởi mỗi thành phần chính. EVR giúp đánh giá mức độ quan trọng tương đối của từng thành phần.}
+
+\textbf{Cách tính toán:} Với giá trị riêng $\lambda_i$ ($i = 1, \dots, n$) của ma trận hiệp phương sai $\mathbf{A}$, tỷ lệ phương sai được giải thích của thành phần chính thứ $i$ được tính bằng:
+\[
+\text{EVR}_i = \frac{\lambda_i}{\sum_{j=1}^n \lambda_j},
+\]
+trong đó $\sum_{j=1}^n \lambda_j$ là tổng phương sai của dữ liệu. Giá trị $\text{EVR}_i$ nằm trong khoảng $[0, 1]$ và thể hiện phần trăm phương sai mà thành phần chính thứ $i$ giải thích.
+
+\textbf{Ý nghĩa:} Giá trị $\text{EVR}_i$ cao cho thấy thành phần chính thứ $i$ nắm giữ nhiều thông tin của dữ liệu gốc. Trong ứng dụng thực tế, các thành phần chính với $\text{EVR}_i$ lớn được ưu tiên giữ lại khi giảm chiều dữ liệu.
+
+\subsection{Cumulative explained variance ratio}
+
+\paragraph{}{Cumulative Explained Variance Ratio (CEVR) là tổng tích lũy của EVR, đo lường tổng phương sai được giữ lại khi sử dụng $k$ thành phần chính đầu tiên. CEVR là công cụ quan trọng để quyết định số lượng thành phần chính cần giữ lại.}
+
+\textbf{Cách tính toán:} Với $k$ thành phần chính đầu tiên, tỷ lệ phương sai tích lũy được giải thích được tính bằng:
+\[
+\text{CEVR}_k = \sum_{i=1}^k \text{EVR}_i = \frac{\sum_{i=1}^k \lambda_i}{\sum_{j=1}^n \lambda_j},
+\]
+trong đó $\lambda_i$ là giá trị riêng tương ứng với thành phần chính thứ $i$ (đã sắp xếp giảm dần). Giá trị $\text{CEVR}_k$ tăng dần theo $k$ và nằm trong khoảng $[0, 1]$.
+
+\textbf{Ý nghĩa:} 
+\begin{itemize}
+  \item Giá trị $\text{CEVR}_k$ cho biết tỷ lệ tổng thông tin dữ liệu được giữ lại khi sử dụng $k$ thành phần chính đầu tiên.
+  \item Thông thường, người ta chọn số thành phần chính $k$ nhỏ nhất sao cho $\text{CEVR}_k \geq \alpha$, với $\alpha$ thường là 0.9 hoặc 0.95 tùy thuộc vào yêu cầu về mức độ bảo toàn thông tin.
+\end{itemize}
+
+\pagebreak

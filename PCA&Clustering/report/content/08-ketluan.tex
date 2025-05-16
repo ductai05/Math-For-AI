@@ -1,0 +1,18 @@
+\newpage
+\section{Kết luận}
+
+\subsection{Bộ dữ liệu hoa Iris}
+
+\paragraph{}{Sử dụng phương pháp \textbf{PCA} và thuật toán \textbf{k-means} cho kết quả phân cụm chính xác đến \textbf{96\%} trên bộ dữ liệu hoa Iris. Điều đó cho thấy chỉ cần PCA và k-means - một thuật toán học không giám sát là đủ để phân loại trên bộ dữ liệu hoa Iris.}
+
+\subsection{Bộ dữ liệu ABIDE II}
+
+\paragraph{}{Sử dụng phương pháp \textbf{PCA} và thuật toán \textbf{k-means} cho kết quả phân cụm chính xác \textbf{57.6\%} trên bộ dữ liệu ABIDE II (đã qua chỉnh sửa). Các thông số khác: \texttt{Recall:} \texttt{0.322}, \texttt{Precision:} \texttt{0.571},  \texttt{F1-score:} \texttt{0.412}.}
+
+\paragraph{}{Sử dụng phương pháp \textbf{PCA} và thuật toán \textbf{GMM} cho kết quả phân cụm chính xác \textbf{56.7\%} trên bộ dữ liệu ABIDE II (đã qua chỉnh sửa). Các thông số khác: \texttt{Recall:} \texttt{0.266}, \texttt{Precision:} \texttt{0.564},  \texttt{F1-score:} \texttt{0.361}.}
+
+\paragraph{}{Qua các độ đo trên, đặc biệt là \texttt{Accuracy:} \texttt{0.576}, ta thấy chỉ dùng các phương pháp biến đổi số học như PCA và mô hình học máy học không giám sát như K-Means và GMM khó phân loại được bệnh nhân ung thư (cancer) và người bình thường (normal) trên bộ dữ liệu ABIDE II (đã qua chỉnh sửa).}
+
+\paragraph{}{Nếu được sử dụng các kĩ thuật học sâu (deep learning), chúng tôi đề xuất dùng Generative Adversarial Network (GAN) và Graph Convolution Network (GCN) \cite{huynh2024use} cùng với học có giám sát để có thể cải thiện hơn trong tác vụ dự đoán người bệnh.}
+
+\pagebreak
