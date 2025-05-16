@@ -2,11 +2,13 @@
 
 Group 6 - Math for AI, AI23 @ HCMUS
 
-This repository contains implementations of various machine learning algorithms, including **Linear Regression**. The code is designed for educational purposes, providing a clear and concise understanding of the mathematical foundations and practical applications of these algorithms.
+This repository contains implementations of various machine learning algorithms, including **Linear Regression**, **PCA&Clustering**. 
+The code is designed for educational purposes, providing a clear and concise understanding of the mathematical foundations and practical applications of these algorithms.
 
 ## Contents
 
 - **Linear Regression**: Implementation of linear regression for predictive modeling.
+- **PCA&Clustering**: Implementation of PCA, KMeans and Gaussian Mixture Model (GMM) for classification tasks on Iris and ABIDE II datasets.
 
 ## Requirements
 
@@ -14,15 +16,17 @@ To run the code in this repository, you need the following Python libraries:
 - `numpy`
 - `matplotlib`
 - `pandas`
+- `scikit-learn` (PCA&Clustering)
 
 Install the required libraries using:
 
 ```bash
-pip install numpy matplotlib pandas
+pip install numpy matplotlib pandas scikit-learn
 ```
 
 #### Set up on NixOS / Nix (if you use NixOS / Nix - else: you can skip this)
-To set up a development environment using Nix, which ensures that all the necessary dependencies are available, you can use the `nix-shell` command. This project includes a `shell.nix` file that specifies the required packages.
+To set up a development environment using Nix, which ensures that all the necessary dependencies are available, you can use the `nix-shell` command. 
+This project includes a `shell.nix` file that specifies the required packages.
 
 1.  Ensure you have Nix installed on your system. If not, you can install it from [the official Nix website](https://nixos.org/download.html).
 
@@ -47,6 +51,6 @@ To set up a development environment using Nix, which ensures that all the necess
     ```
     ###### Usage
 
-    1.  Open the `LR.ipynb` Jupyter Notebook to explore the implementation of linear regression.
+    1.  Open the `.ipynb` file (Jupyter Notebook)
     2.  Choose the kernel created by `nix-shell`
-    3.  Run cells in `LR.ipynb`
+    3.  Run cells
